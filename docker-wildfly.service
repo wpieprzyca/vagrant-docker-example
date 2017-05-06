@@ -1,0 +1,11 @@
+[Unit]
+Description=Wildfly container
+Requires=docker.service
+After=docker.service
+
+[Service]
+Restart=always
+ExecStart=/usr/bin/docker run -p 8080:8080 -p 9990:9990 -v /home/vagrant/deployments:/opt/jboss/wildfly/standalone/deployments/:rw wildfly
+
+[Install]
+WantedBy=default.target
